@@ -5,9 +5,8 @@ using UnityEditor.SceneManagement;
 using UnityEditor;
 using System.Threading.Tasks;
 using Discord;
-using Debug = UnityEngine.Debug;
-using System.Diagnostics;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 [InitializeOnLoad]
 public static class UnityEditorRPC
@@ -65,11 +64,10 @@ public static class UnityEditorRPC
         }
 
         // Get start timestamp
-        TimeSpan timeSpan = TimeSpan.FromMilliseconds(EditorAnalyticsSessionInfo.elapsedTime);
-        startTimestamp = DateTimeOffset.Now.Add(timeSpan).ToUnixTimeSeconds();
+        startTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
         // Update activity on scene change
-        SceneManager.activeSceneChanged += OnActiveSceneChanged;
+        EditorSceneManager.sceneOpened += OnSceneOpened;
 
         // Update activity
         EditorApplication.update += Update;
@@ -79,7 +77,7 @@ public static class UnityEditorRPC
 
     #region SceneChanged
     // Callback for scene changes
-    private static void OnActiveSceneChanged(Scene previousScene, Scene newScene)
+    private static void OnSceneOpened(Scene previousScene, OpenSceneMode  newScene)
     {
         UpdateActivity();
     }
