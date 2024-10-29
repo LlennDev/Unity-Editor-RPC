@@ -17,7 +17,7 @@ public static class UnityEditorRPC
     private static long startTimestamp;
     private static bool playMode = false;
 
-    private string largeimage;
+    private static string largeimage;
 
     #region Initialization
     static UnityEditorRPC()
@@ -51,16 +51,16 @@ public static class UnityEditorRPC
         switch (unityver)
         {
             case "6000":
-                largeicon = "unity6";
+                largeimage = "unity6";
                 break;
             case "2023":
             case "2022":
             case "2021":
             case "2020":
-                largeicon = "unitymodern";
+                largeimage = "unitymodern";
                 break;
             default:
-                largeicon = "unityold"
+                largeimage = "unityold";
                 break;
         }
 
@@ -107,7 +107,7 @@ public static class UnityEditorRPC
             Timestamps = { Start = startTimestamp },
             Assets =
                 {
-                    LargeImage = largeicon,
+                    LargeImage = largeimage,
                     LargeText = "Unity " + Application.unityVersion
                 },
         };
