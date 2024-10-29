@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Discord;
 using Debug = UnityEngine.Debug;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
 
 [InitializeOnLoad]
 public static class UnityEditorRPC
@@ -80,14 +81,6 @@ public static class UnityEditorRPC
     // Callback for scene changes
     private static void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
-        UpdateActivity();
-    }
-    #endregion
-
-    #region Update
-    private static void Update()
-    {
-        // Update activity with new scene name when a scene is loaded
         UpdateActivity();
     }
     #endregion
