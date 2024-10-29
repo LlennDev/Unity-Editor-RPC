@@ -1,0 +1,19 @@
+{
+  "name": "com.elry.editorrpc",
+  "version": "1.0.0",
+  "displayName": "Discord Editor Rich Presence",
+  "description": "Implements the RPC Protocol for discord using Discord RPC CSharp",
+  "unity": "6000.0",
+  "documentationUrl": "https://github.com/ElryGH/UnityRPC",
+  "changelogUrl": "https://github.com/ElryGH/UnityRPC/commits/master",
+  "license": "GNU",
+  "keywords": [
+    "Discord",
+    "Editor Rich Presence",
+    "RPC"
+  ],
+  "author": {
+    "name": "Elry",
+    "url": "https://elry.moe"
+  }
+}
