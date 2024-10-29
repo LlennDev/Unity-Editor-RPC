@@ -4,8 +4,8 @@
   "displayName": "Discord Editor Rich Presence",
   "description": "Implements the RPC Protocol for discord using Discord RPC CSharp",
   "unity": "6000.0",
-  "documentationUrl": "https://github.com/ElryGH/UnityRPC",
-  "changelogUrl": "https://github.com/ElryGH/UnityRPC/commits/master",
+  "documentationUrl": "https://github.com/ElryGH/Unity-Editor-RPC",
+  "changelogUrl": "https://github.com/ElryGH/Unity-Editor-RPC/commits/master",
   "license": "GNU",
   "keywords": [
     "Discord",
