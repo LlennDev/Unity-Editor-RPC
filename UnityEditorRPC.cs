@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using System;
 using UnityEngine;
 using UnityEditor.SceneManagement;
@@ -67,15 +67,25 @@ public static class UnityEditorRPC
         TimeSpan timeSpan = TimeSpan.FromMilliseconds(EditorAnalyticsSessionInfo.elapsedTime);
         startTimestamp = DateTimeOffset.Now.Add(timeSpan).ToUnixTimeSeconds();
 
+        // Update activity on scene change
+        SceneManager.activeSceneChanged += OnActiveSceneChanged;
+
         // Update activity
         EditorApplication.update += Update;
-        SceneManager.sceneLoaded += OnSceneLoaded;
         UpdateActivity();
     }
     #endregion
 
-    #region SceneChangeHandling
-    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    #region SceneChanged
+    // Callback for scene changes
+    private static void OnActiveSceneChanged(Scene previousScene, Scene newScene)
+    {
+        UpdateActivity();
+    }
+    #endregion
+
+    #region Update
+    private static void Update()
     {
         // Update activity with new scene name when a scene is loaded
         UpdateActivity();
