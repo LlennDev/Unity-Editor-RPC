@@ -2,7 +2,6 @@
 using System;
 using UnityEngine;
 using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.Threading.Tasks;
 using Discord;
@@ -75,7 +74,7 @@ public static class UnityEditorRPC
     }
     #endregion
 
-    #region Scene Change Handling
+    #region SceneChangeHandling
     private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Update activity with new scene name when a scene is loaded
