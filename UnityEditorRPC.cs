@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.Threading.Tasks;
 using Discord;
@@ -24,6 +25,7 @@ public static class UnityEditorRPC
     {
         DelayStart();
     }
+
     public static async void DelayStart(int delay = 1000)
     {
         await Task.Delay(delay);
@@ -32,7 +34,6 @@ public static class UnityEditorRPC
 
     public static void Init()
     {
-
         // Start Discord plugin
         try
         {
@@ -45,7 +46,6 @@ public static class UnityEditorRPC
         }
         
         string unityver = Application.unityVersion;
-
         unityver = unityver.Substring(0, 4);
 
         switch (unityver)
@@ -70,7 +70,15 @@ public static class UnityEditorRPC
 
         // Update activity
         EditorApplication.update += Update;
-        EditorApplication.playModeStateChanged += PlayModeChanged;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        UpdateActivity();
+    }
+    #endregion
+
+    #region Scene Change Handling
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Update activity with new scene name when a scene is loaded
         UpdateActivity();
     }
     #endregion
@@ -78,17 +86,7 @@ public static class UnityEditorRPC
     #region Update
     private static void Update()
     {
-        if(discord != null) discord.RunCallbacks();
-    }
-
-    private static void PlayModeChanged (PlayModeStateChange state)
-    {
-        if (EditorApplication.isPlaying != playMode)
-        {
-            playMode = EditorApplication.isPlaying;
-
-            UpdateActivity();
-        }
+        if (discord != null) discord.RunCallbacks();
     }
 
     public static void UpdateActivity()
@@ -101,24 +99,21 @@ public static class UnityEditorRPC
 
         Activity activity = new Activity
         {
-
-            State = EditorSceneManager.GetActiveScene().name + " scene",
+            State = "Scene: " + EditorSceneManager.GetActiveScene().name,
             Details = Application.productName,
             Timestamps = { Start = startTimestamp },
             Assets =
-                {
-                    LargeImage = largeimage,
-                    LargeText = "Unity " + Application.unityVersion
-                },
+            {
+                LargeImage = largeimage,
+                LargeText = "Unity " + Application.unityVersion
+            },
         };
 
         discord.GetActivityManager().UpdateActivity(activity, result =>
         {
             if (result != Result.Ok) Debug.LogError(result.ToString());
         });
-
     }
     #endregion
-
 }
 #endif
