@@ -14,7 +14,7 @@ You need the [Discord SDK](https://github.com/thetestgame/upm-discord-game-sdk) 
 ## Installation
 1. Open the Package manager in Unity.
 2. Click on the + in the top right and then add via Git.
-3. Paste in this link and click Add: `https://github.com/ElryGH/UnityRPC.git`
+3. Paste in this link and click Add: `https://github.com/ElryGH/Unity-Editor-RPC.git`
 
 ## Usage
 Its fully automatic, it starts the second you open the Project.
