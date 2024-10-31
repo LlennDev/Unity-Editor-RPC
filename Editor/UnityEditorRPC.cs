@@ -15,7 +15,6 @@ public static class UnityEditorRPC
     private static Discord.Discord discord;
 
     private static long startTimestamp;
-    private static bool playMode = false;
 
     private static string largeimage;
 
