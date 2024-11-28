@@ -15,5 +15,8 @@
   "author": {
     "name": "Elry",
     "url": "https://elry.moe"
+  },
+  "dependencies": {
+	  "com.discord.game-sdk": "https://github.com/thetestgame/upm-discord-game-sdk.git"
   }
 }
