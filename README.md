@@ -10,6 +10,7 @@ Made this cuz all other Plugins that did this before, are unmaintained or abanda
 
 ## Dependencies
 You need the [Discord SDK](https://github.com/thetestgame/upm-discord-game-sdk) installed.
+You also need Git.
 
 ## Installation
 1. Open the Package manager in Unity.
