@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+	  "com.discord.game-sdk": "https://github.com/thetestgame/upm-discord-game-sdk.git#v3.2.1"
+  }
+}
