@@ -9,7 +9,7 @@ Made this cuz all other Plugins that did this before, are unmaintained or abanda
 - Cross-platform compatibility.
 
 ## Dependencies
-You need [Git](https://git-scm.com/) installed.
+You need the [Discord SDK](https://github.com/thetestgame/upm-discord-game-sdk) installed.
 
 ## Installation
 1. Open the Package manager in Unity.
