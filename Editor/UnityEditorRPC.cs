@@ -98,7 +98,7 @@ public static class UnityEditorRPC
 
         Activity activity = new Activity
         {
-            State = "Scene: " + EditorSceneManager.GetActiveScene().name,
+            State = "Open Scene: " + EditorSceneManager.GetActiveScene().name,
             Details = "Working on: " + Application.productName,
             Timestamps = { Start = startTimestamp },
             Assets =
