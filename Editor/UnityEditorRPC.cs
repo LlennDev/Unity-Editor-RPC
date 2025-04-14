@@ -99,7 +99,7 @@ public static class UnityEditorRPC
         Activity activity = new Activity
         {
             State = "Scene: " + EditorSceneManager.GetActiveScene().name,
-            Details = Application.productName,
+            Details = "Working on: " + Application.productName,
             Timestamps = { Start = startTimestamp },
             Assets =
             {
