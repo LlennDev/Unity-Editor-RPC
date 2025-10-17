@@ -15,7 +15,7 @@ You also need Git.
 ## Installation
 1. Open the Package manager in Unity.
 2. Click on the + in the top right and then add via Git.
-3. Paste in this link and click Add: `https://github.com/lucy-goblin/Unity-Editor-RPC.git`
+3. Paste in this link and click Add: `https://github.com/LlennDev/Unity-Editor-RPC.git`
 
 ## Usage
 Its fully automatic, it starts the second you open the Project.
