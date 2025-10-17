@@ -24,7 +24,7 @@ public static class UnityEditorRPC
         DelayStart();
     }
 
-    public static async void DelayStart(int delay = 1000)
+    public static async void DelayStart(int delay = 500)
     {
         await Task.Delay(delay);
         Init();
@@ -70,6 +70,11 @@ public static class UnityEditorRPC
 
         // Update activity
         EditorApplication.update += Update;
+
+        // Trigger OnSceneOpened atleast once
+        OnSceneOpened();
+        
+        // Trigger Update atleast once
         UpdateActivity();
     }
     #endregion
@@ -98,7 +103,7 @@ public static class UnityEditorRPC
 
         Activity activity = new Activity
         {
-            State = "Open Scene: " + EditorSceneManager.GetActiveScene().name,
+            State = "In Scene: " + EditorSceneManager.GetActiveScene().name,
             Details = "Working on: " + Application.productName,
             Timestamps = { Start = startTimestamp },
             Assets =
