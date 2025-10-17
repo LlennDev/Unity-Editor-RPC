@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+
 using System;
 using UnityEngine;
 using UnityEditor.SceneManagement;
@@ -17,8 +18,7 @@ public static class UnityEditorRPC
     private static long startTimestamp;
 
     private static string largeimage;
-
-    #region Initialization
+    
     static UnityEditorRPC()
     {
         DelayStart();
@@ -66,28 +66,18 @@ public static class UnityEditorRPC
         startTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
         // Update activity on scene change
-        EditorSceneManager.sceneOpened += OnSceneOpened;
+        SceneManager.activeSceneChanged += (scene, mode) =>
+        {
+            UpdateActivity();
+        };
 
         // Update activity
         EditorApplication.update += Update;
-
-        // Trigger OnSceneOpened atleast once
-        OnSceneOpened();
         
         // Trigger Update atleast once
         UpdateActivity();
     }
-    #endregion
-
-    #region SceneChanged
-    // Callback for scene changes
-    private static void OnSceneOpened(Scene previousScene, OpenSceneMode  newScene)
-    {
-        UpdateActivity();
-    }
-    #endregion
-
-    #region Update
+    
     private static void Update()
     {
         if (discord != null) discord.RunCallbacks();
@@ -103,7 +93,7 @@ public static class UnityEditorRPC
 
         Activity activity = new Activity
         {
-            State = "In Scene: " + EditorSceneManager.GetActiveScene().name,
+            State = "In Scene: " + SceneManager.GetActiveScene().name,
             Details = "Working on: " + Application.productName,
             Timestamps = { Start = startTimestamp },
             Assets =
@@ -118,6 +108,5 @@ public static class UnityEditorRPC
             if (result != Result.Ok) Debug.LogError(result.ToString());
         });
     }
-    #endregion
 }
 #endif
